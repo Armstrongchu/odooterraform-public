@@ -3,6 +3,12 @@ variable "aws_region" {
   default = "ap-southeast-2"
 }
 
+variable "aws_profile" {
+  description = "Optional AWS CLI profile. Leave unset to use the default credential chain."
+  type        = string
+  default     = null
+}
+
 variable "vpc_name" {
   type    = string
   default = "odoovpc"
@@ -50,9 +56,5 @@ variable "server_name" {
 
 variable "certbot_cert" {
   type = map(any)
-  default = {
-    "<domain1>" = "<email1>"
-    "<domain2>" = "<email2>"
-  }
+  default = {}
 }
-

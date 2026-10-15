@@ -67,8 +67,7 @@ variable "instance_type" {
 variable "certbot_cert" {
   type = map(any)
   default = {
-    "<domain1>" = "<email1>"
-    "<domain2>" = "<email2>"
+    "example.com" = "admin@example.com"
   }
 }
 ```
@@ -89,7 +88,6 @@ Terraform will prompt you for inputs such as IP address and server name. Please 
 You will be asked if you want to deploy the changes on AWS. Type yes and press Enter to proceed with the deployment.
 
 It will take about 5 minutes to deploy the infrastructure. Once the deployment is completed, you should be able to visit Odoo through the domain
-
 
 
 

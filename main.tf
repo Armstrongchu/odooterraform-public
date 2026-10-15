@@ -104,14 +104,18 @@ resource "aws_instance" "odooERP" {
 }
 
 resource "null_resource" "install_docker_git" {
-  depends_on = [aws_instance.odooERP, aws_eip_association.elastic_ip_association]
+  depends_on = [
+    aws_instance.odooERP,
+    aws_eip_association.elastic_ip_association,
+    aws_route_table_association.public
+  ]
 
   connection {
     type        = "ssh"
     user        = "ubuntu"
     host        = var.elastic_ip
     private_key = tls_private_key.odoo_key.private_key_pem
-    timeout     = "8"
+    timeout     = "8m"
   }
 
   provisioner "remote-exec" {

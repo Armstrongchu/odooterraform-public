@@ -12,6 +12,10 @@ terraform {
       source  = "hashicorp/null"
       version = ">= 3.1.0"
     }
+    local = {
+      source  = "hashicorp/local"
+      version = ">= 2.0.0"
+    }
   }
 
 
@@ -19,8 +23,8 @@ terraform {
 
 # Configure the AWS Provider
 provider "aws" {
-  profile = "odooCredential"
-  region  = "ap-southeast-2"
+  profile = var.aws_profile
+  region  = var.aws_region
 }
 
 provider "tls" {}
@@ -28,3 +32,5 @@ provider "tls" {}
 provider "null" {
   # Configuration options for the null provider, if any
 }
+
+provider "local" {}
